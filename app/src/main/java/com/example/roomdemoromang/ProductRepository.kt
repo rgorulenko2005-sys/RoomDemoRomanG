@@ -1,5 +1,6 @@
 package com.example.roomdemoromang
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
@@ -8,6 +9,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class ProductRepository(private val productDao: ProductDao) {
+    val allProducts: LiveData<List<Product>> = productDao.getAllProducts()
     val searchResults = MutableLiveData<List<Product>>()
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
