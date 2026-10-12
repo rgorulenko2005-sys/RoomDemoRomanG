@@ -19,4 +19,16 @@ class MainViewModel(application: Application) : ViewModel() {
         allProducts = repository.allProducts
         searchResults = repository.searchResults
     }
+
+    fun insertProduct(product: Product) {
+        repository.insertProduct(product)
+    }
+
+    fun findProduct(name: String) {
+        repository.findProduct(name)
+    }
+
+    fun deleteProduct(name: String) {
+        repository.deleteProduct(name)
+    }
 }
