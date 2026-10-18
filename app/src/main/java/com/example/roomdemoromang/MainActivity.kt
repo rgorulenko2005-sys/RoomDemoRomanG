@@ -1,5 +1,6 @@
 package com.example.roomdemoromang
 
+import android.app.Application
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -24,6 +25,8 @@ import com.example.roomdemoromang.ui.theme.RoomDemoRomanGTheme
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -99,5 +102,12 @@ fun CustomTextField(
         modifier = Modifier.padding(10.dp),
         textStyle = TextStyle(fontWeight = FontWeight.Bold, fontSize = 30.sp)
     )
+}
+
+class MainViewModelFactory(val application: Application) :
+    ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return MainViewModel(application) as T
+    }
 }
 
